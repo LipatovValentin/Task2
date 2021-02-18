@@ -12,7 +12,7 @@ namespace Task2
 
             Console.ReadKey();
         }
-        public static Transport GetTransport()
+        public static IWorker GetTransport()
         {
             switch (new Random().Next(0, 3))
             {
@@ -23,30 +23,27 @@ namespace Task2
             }
         }
     }
-    public class Transport
+    public interface IWorker
     {
-        public virtual void Work()
-        {
-            throw new Exception("Method is not overridden");
-        }
+        void Work();
     }
-    public class Car : Transport
+    public class Car : IWorker
     {
-        public override void Work()
+        public void Work()
         {
             Console.WriteLine("Drive");
         }
     }
-    public class Boat : Transport
+    public class Boat : IWorker
     {
-        public override void Work()
+        public void Work()
         {
             Console.WriteLine("Float");
         }
     }
-    public class Plane : Transport
+    public class Plane : IWorker
     {
-        public override void Work()
+        public void Work()
         {
             Console.WriteLine("Fly");
         }
