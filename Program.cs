@@ -12,7 +12,7 @@ namespace Task2
 
             Console.ReadKey();
         }
-        public static IWorker GetTransport()
+        public static Transport GetTransport()
         {
             switch (new Random().Next(0, 3))
             {
@@ -23,27 +23,27 @@ namespace Task2
             }
         }
     }
-    public interface IWorker
+    public abstract class Transport
     {
-        void Work();
+        public abstract void Work();
     }
-    public class Car : IWorker
+    public class Car : Transport
     {
-        public void Work()
+        public override void Work()
         {
             Console.WriteLine("Drive");
         }
     }
-    public class Boat : IWorker
+    public class Boat : Transport
     {
-        public void Work()
+        public override void Work()
         {
             Console.WriteLine("Float");
         }
     }
-    public class Plane : IWorker
+    public class Plane : Transport
     {
-        public void Work()
+        public override void Work()
         {
             Console.WriteLine("Fly");
         }
